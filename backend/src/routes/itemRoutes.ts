@@ -8,5 +8,6 @@ const asyncHandler = (fn: any) => (req: any, res: any, next: any) =>
   
 router.post('/', asyncHandler(ItemController.createItem));
 router.get('/:id', asyncHandler(ItemController.getItem));
+router.put('/:id', asyncHandler(ItemController.updateItem));
 
 export default router;

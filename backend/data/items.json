@@ -2,11 +2,11 @@
   "11cb3e87-cba6-4300-b57e-fa74e50d12a4": {
     "id": "11cb3e87-cba6-4300-b57e-fa74e50d12a4",
     "name": "Laptop",
-    "description": "Dell XPS",
-    "color": "Silver",
-    "price": 1200,
+    "description": "DELL Laptop",
+    "color": "White",
+    "price": 100,
     "createdAt": "2025-01-18T23:41:59.316Z",
-    "updatedAt": "2025-01-18T23:41:59.316Z",
+    "updatedAt": "2025-01-18T23:48:58.120Z",
     "events": []
-  }
+    }
 }

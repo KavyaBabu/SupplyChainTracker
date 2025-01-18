@@ -35,4 +35,21 @@ export class ItemController {
       res.status(500).json({ error: 'Failed to fetch item' });
     }
   }
+
+  static async updateItem(req: Request, res: Response) {
+    try {
+      const db = await FileDB.getInstance();
+      const updatedItem = await db.updateItem(req.params.id, req.body);
+  
+      if (!updatedItem) {
+        return res.status(404).json({ error: 'Item not found' });
+      }
+  
+      res.json(updatedItem);
+    } catch (error) {
+      console.error('Error updating item:', error);
+      res.status(500).json({ error: 'Failed to update item' });
+    }
+  }
+  
 }
