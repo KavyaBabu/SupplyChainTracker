@@ -1,8 +1,9 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { Item } from '../models/Item';
+import { Event } from '../models/Event';
 
-const DB_PATH = path.join(__dirname, '../../data/SupplyChainItems.json');
+const DB_PATH = path.join(__dirname, '../../data/items.json');
 
 export class FileDB {
   private static instance: FileDB;
@@ -35,20 +36,19 @@ export class FileDB {
     await fs.writeFile(DB_PATH, JSON.stringify(data, null, 2));
   }
 
-  async getItem(id: string): Promise<Item | undefined> {
-    return this.items.get(id);
-  }
-
   async createItem(item: Item): Promise<Item> {
     this.items.set(item.id, item);
     await this.save();
     return item;
   }
 
+  async getItem(id: string): Promise<Item | undefined> {
+    return this.items.get(id);
+  }
+
   async updateItem(id: string, updates: Partial<Item>): Promise<Item | undefined> {
     const item = this.items.get(id);
     if (!item) return undefined;
-
     const updatedItem = { ...item, ...updates, updatedAt: new Date() };
     this.items.set(id, updatedItem);
     await this.save();
@@ -58,8 +58,7 @@ export class FileDB {
   async addEvent(itemId: string, event: Event): Promise<Item | undefined> {
     const item = this.items.get(itemId);
     if (!item) return undefined;
-
-    item.events.push(event);
+    item.events.push(event as Event);
     item.updatedAt = new Date();
     await this.save();
     return item;

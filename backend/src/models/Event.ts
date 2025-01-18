@@ -8,3 +8,4 @@ export interface Event {
     timestamp: Date;
     notes?: string;
 }
+  
