@@ -56,7 +56,7 @@ const CreateItem = () => {
       <Card className="form-card" elevation={3}>
         <CardContent>
           <Typography variant="h5" align="center" gutterBottom>
-            CREATE ITEM
+            Create Item
           </Typography>
           {success && <Alert severity="success" className="alert-success">{success}</Alert>}
           <form onSubmit={handleSubmit} style={{ marginTop: '10px' }}>

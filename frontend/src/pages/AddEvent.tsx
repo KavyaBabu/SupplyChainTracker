@@ -49,8 +49,15 @@ const AddEvent = () => {
     let error = '';
     if (!value.trim()) {
       error = `${field} is required`;
-    } else if (!/^[a-zA-Z0-9 ]+$/.test(value)) {
-      error = `${field} must contain only letters and numbers`;
+    } else {
+      if (field === 'type' && !eventTypes.includes(value)) {
+        error = 'Invalid event type selected';
+      } else if (
+        (field === 'location' || field === 'custodian' || field === 'notes') &&
+        !/^[a-zA-Z0-9 ]+$/.test(value)
+      ) {
+        error = `${field} must contain only letters and numbers`;
+      }
     }
     return error;
   };
@@ -86,7 +93,7 @@ const AddEvent = () => {
     <Container maxWidth="sm" style={{ marginTop: '10px' }}>
       <Card className="form-card" elevation={3}>
         <CardContent>
-          <Typography variant="h4" align="center" gutterBottom>
+          <Typography variant="h5" align="center" gutterBottom>
             Add Event
           </Typography>
           {success && <Alert severity="success" className="alert-success">{success}</Alert>}

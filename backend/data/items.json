@@ -84,12 +84,84 @@
   },
   "c3e5e930-f3a9-4d71-a958-0e0a81a853bb": {
     "id": "c3e5e930-f3a9-4d71-a958-0e0a81a853bb",
-    "name": "Name",
+    "name": "Desktop Monitor",
     "description": "des",
     "color": "sndks",
     "price": "10",
     "createdAt": "2025-01-19T22:15:42.169Z",
-    "updatedAt": "2025-01-19T22:15:42.169Z",
+    "updatedAt": "2025-01-19T22:48:00.269Z",
+    "events": [
+      {
+        "id": "663fa0d3-7d80-47e6-8174-8357221d36c8",
+        "itemId": "c3e5e930-f3a9-4d71-a958-0e0a81a853bb",
+        "type": "CUSTODIAN_CHANGE",
+        "location": "Warehouse",
+        "custodian": "Mary",
+        "status": "IN TRANSIT",
+        "timestamp": "2025-01-19T22:46:20.823Z",
+        "notes": "Transferred to Mary"
+      },
+      {
+        "id": "324d98c8-f542-4199-8761-bfd6800642c3",
+        "itemId": "c3e5e930-f3a9-4d71-a958-0e0a81a853bb",
+        "type": "STATUS_UPDATE",
+        "location": "Warehouse A",
+        "custodian": "Smith",
+        "status": "PENDING",
+        "timestamp": "2025-01-19T22:47:16.888Z",
+        "notes": "Inspected and Approved"
+      }
+    ]
+  },
+  "a60168b8-0b90-4365-897e-268b9071128e": {
+    "id": "a60168b8-0b90-4365-897e-268b9071128e",
+    "name": "Laptop",
+    "description": "High performance laptop",
+    "color": "Black",
+    "price": "12000",
+    "createdAt": "2025-01-19T22:32:35.613Z",
+    "updatedAt": "2025-01-19T22:32:35.613Z",
+    "events": []
+  },
+  "77163413-bcaf-4df1-8986-f34b7dc162f0": {
+    "id": "77163413-bcaf-4df1-8986-f34b7dc162f0",
+    "name": "Mobile Phone",
+    "description": "Latest smartphone model",
+    "color": "Silver",
+    "price": "200",
+    "createdAt": "2025-01-19T22:33:05.688Z",
+    "updatedAt": "2025-01-19T22:49:49.432Z",
+    "events": [
+      {
+        "id": "db8f4c64-53a1-46d2-8563-43c134a9f5dc",
+        "itemId": "77163413-bcaf-4df1-8986-f34b7dc162f0",
+        "type": "LOCATION_UPDATE",
+        "location": "Warehouse B",
+        "custodian": "Kavya Babu",
+        "status": "IN TRANSIT",
+        "timestamp": "2025-01-19T22:48:32.270Z",
+        "notes": "Received in warehouse"
+      },
+      {
+        "id": "a6653d05-4f89-40af-ad2b-b56e817557e5",
+        "itemId": "77163413-bcaf-4df1-8986-f34b7dc162f0",
+        "type": "STATUS_UPDATE",
+        "location": "Warehouse A",
+        "custodian": "Kavya",
+        "status": "RETURNED",
+        "timestamp": "2025-01-19T22:49:49.432Z",
+        "notes": "Parcel is returned"
+      }
+    ]
+  },
+  "d1611d22-08cb-49c2-9353-620a89906bda": {
+    "id": "d1611d22-08cb-49c2-9353-620a89906bda",
+    "name": "Wireless Mouse",
+    "description": "Bluetooth Mouse",
+    "color": "Red",
+    "price": "30",
+    "createdAt": "2025-01-19T22:33:47.336Z",
+    "updatedAt": "2025-01-19T22:33:47.336Z",
     "events": []
   }
 }

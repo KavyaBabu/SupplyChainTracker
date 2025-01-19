@@ -124,7 +124,7 @@ export class ItemController {
       const db = await FileDB.getInstance();
       const items = await db.getAllItems();
   
-      res.json(items); // Return the list of all items
+      res.json(items);
     } catch (error) {
       console.error('Error fetching all items:', error);
       res.status(500).json({ error: 'Failed to fetch items' });
