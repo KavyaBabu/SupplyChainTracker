@@ -39,5 +39,25 @@
         "notes": "Check stock items"
       }
     ]
+  },
+  "59adae37-c506-46ee-9f15-08f71d2d410c": {
+    "id": "59adae37-c506-46ee-9f15-08f71d2d410c",
+    "name": "Item 2",
+    "description": "Description any",
+    "color": "black",
+    "price": "1000",
+    "createdAt": "2025-01-19T18:46:00.546Z",
+    "updatedAt": "2025-01-19T18:46:00.546Z",
+    "events": []
+  },
+  "fd280a7a-d920-41ae-a80a-9d2def9793bb": {
+    "id": "fd280a7a-d920-41ae-a80a-9d2def9793bb",
+    "name": "name 1",
+    "description": "desc",
+    "color": "Black",
+    "price": "100",
+    "createdAt": "2025-01-19T18:51:22.166Z",
+    "updatedAt": "2025-01-19T18:51:22.166Z",
+    "events": []
   }
 }
