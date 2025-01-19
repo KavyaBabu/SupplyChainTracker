@@ -40,13 +40,15 @@ export class ItemController {
   static async updateItem(req: Request, res: Response) {
     try {
       const db = await FileDB.getInstance();
-      const updatedItem = await db.updateItem(req.params.id, req.body);
+      const item = await db.getItem(req.params.id);
   
-      if (!updatedItem) {
+      if (!item) {
         return res.status(404).json({ error: 'Item not found' });
       }
   
-      res.json(updatedItem);
+      const updatedItem = await db.updateItem(req.params.id, req.body);
+  
+      res.status(200).json(updatedItem);
     } catch (error) {
       console.error('Error updating item:', error);
       res.status(500).json({ error: 'Failed to update item' });

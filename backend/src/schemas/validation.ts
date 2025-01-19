@@ -7,6 +7,13 @@ export const validateItem = [
   body('price').optional().isNumeric().withMessage('Price must be a number')
 ];
 
+export const validateItemUpdate = [
+  body('name').optional().isString().withMessage('Name must be a string'),
+  body('description').optional().isString().withMessage('Description must be a string'),
+  body('color').optional().isString().withMessage('Color must be a string'),
+  body('price').optional().isNumeric().withMessage('Price must be a number')
+];
+
 export const validateEvent = [
   body('type')
     .notEmpty().withMessage('Event type is required')

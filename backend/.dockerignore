@@ -1,0 +1,4 @@
+node_modules
+dist
+data/items.json
+npm-debug.log

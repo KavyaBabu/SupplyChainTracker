@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { ItemController } from '../controllers/itemController';
-import { validateItem, validateEvent } from '../schemas/validation';
+import { ItemController } from '../controllers/ItemController';
+import { validateItem, validateItemUpdate, validateEvent } from '../schemas/validation';
 import { validationResult } from 'express-validator';
 
 const router = Router();
@@ -19,7 +19,7 @@ const asyncHandler = (fn: any) => (req: any, res: any, next: any) =>
 router.post('/', validateItem, validateRequest, asyncHandler(ItemController.createItem));
 router.get('/', asyncHandler(ItemController.getAllItems));
 router.get('/:id', asyncHandler(ItemController.getItem));
-router.put('/:id', validateItem, validateRequest, asyncHandler(ItemController.updateItem));
+router.put('/:id', validateItemUpdate, validateRequest, asyncHandler(ItemController.updateItem));
 
 router.post('/:id/events', validateEvent, validateRequest, asyncHandler(ItemController.addEvent));
 
