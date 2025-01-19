@@ -17,6 +17,7 @@ const asyncHandler = (fn: any) => (req: any, res: any, next: any) =>
   Promise.resolve(fn(req, res, next)).catch(next);
 
 router.post('/', validateItem, validateRequest, asyncHandler(ItemController.createItem));
+router.get('/', asyncHandler(ItemController.getAllItems));
 router.get('/:id', asyncHandler(ItemController.getItem));
 router.put('/:id', validateItem, validateRequest, asyncHandler(ItemController.updateItem));
 

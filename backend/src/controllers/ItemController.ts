@@ -117,5 +117,17 @@ export class ItemController {
       res.status(500).json({ error: 'Failed to get last event' });
     }
   }
+  static async getAllItems(req: Request, res: Response) {
+    try {
+      const db = await FileDB.getInstance();
+      const items = await db.getAllItems();
+  
+      res.json(items); // Return the list of all items
+    } catch (error) {
+      console.error('Error fetching all items:', error);
+      res.status(500).json({ error: 'Failed to fetch items' });
+    }
+  }
+  
   
 }

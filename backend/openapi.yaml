@@ -1,0 +1,215 @@
+openapi: 3.0.0
+info:
+  title: Supply Chain Track & Trace API
+  description: API for tracking supply chain items and their events
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/api
+    description: Local development server
+
+paths:
+  /items:
+    post:
+      summary: Create a new supply chain item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+      responses:
+        "201":
+          description: Item successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+    get:
+      summary: Get all supply chain items
+      responses:
+        "200":
+          description: List of items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+
+  /items/{id}:
+    get:
+      summary: Get a specific item by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Item retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        "404":
+          description: Item not found
+
+    put:
+      summary: Update an existing item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ItemUpdate'
+      responses:
+        "200":
+          description: Item updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        "404":
+          description: Item not found
+
+  /items/{id}/events:
+    post:
+      summary: Add an event to an existing item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Event'
+      responses:
+        "200":
+          description: Event added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        "404":
+          description: Item not found
+
+    get:
+      summary: Get all events for an item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Event'
+        "404":
+          description: Item not found
+
+  /items/{id}/events/last:
+    get:
+      summary: Get the last event for an item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Last event retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        "404":
+          description: No events found for this item
+
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        color:
+          type: string
+          nullable: true
+        price:
+          type: number
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+
+    ItemUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        color:
+          type: string
+          nullable: true
+        price:
+          type: number
+          nullable: true
+
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+        itemId:
+          type: string
+        type:
+          type: string
+          enum: [LOCATION_UPDATE, CUSTODIAN_CHANGE, STATUS_UPDATE]
+        location:
+          type: string
+          nullable: true
+        custodian:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        timestamp:
+          type: string
+          format: date-time
+        notes:
+          type: string
+          nullable: true

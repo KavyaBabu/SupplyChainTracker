@@ -1,12 +1,12 @@
 {
   "11cb3e87-cba6-4300-b57e-fa74e50d12a4": {
     "id": "11cb3e87-cba6-4300-b57e-fa74e50d12a4",
-    "name": "Laptop",
-    "description": "DELL Laptop",
-    "color": "White",
-    "price": 100,
+    "name": "string",
+    "description": "string",
+    "color": "Blue",
+    "price": 1000,
     "createdAt": "2025-01-18T23:41:59.316Z",
-    "updatedAt": "2025-01-19T00:05:09.373Z",
+    "updatedAt": "2025-01-19T00:29:14.940Z",
     "events": [
       {
         "id": "c3de40ec-fc06-47db-9873-b9b43feeb59f",
@@ -23,6 +23,16 @@
         "location": "Warehouse B",
         "custodian": "Kavya Babu",
         "timestamp": "2025-01-19T00:05:09.373Z"
+      },
+      {
+        "id": "32e7fda1-bbe6-4565-8a14-3220c475d7e7",
+        "itemId": "11cb3e87-cba6-4300-b57e-fa74e50d12a4",
+        "type": "LOCATION_UPDATE",
+        "location": "Store Box Argos",
+        "custodian": "Mr Peram",
+        "status": "string",
+        "timestamp": "2025-01-19T00:29:14.940Z",
+        "notes": "string"
       }
     ]
   }
