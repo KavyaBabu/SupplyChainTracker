@@ -1,0 +1,153 @@
+/* Reset body to take up full height */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Container to take up full height */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Center the heading */
+h3 {
+  color: #2c3e50;
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Custom styling for the AppBar */
+.MuiAppBar-root {
+  background-color: white !important;
+  box-shadow: none;
+  border-bottom: 2px solid #ddd;
+  display: flex;
+  justify-content: center;
+}
+
+/* Style for the Tabs */
+.MuiTabs-flexContainer {
+  justify-content: center;
+}
+
+.MuiTab-root {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 12px 16px;
+  color: #34495e !important;
+}
+
+.MuiTab-root:hover {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+}
+
+/* Refresh button styling */
+.refresh-button {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #007bff !important;
+  color: white !important;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.refresh-button:hover {
+  background-color: #0056b3 !important;
+}
+
+/* Centering items list */
+.item-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Card design */
+.item-card {
+  width: 100%;
+  max-width: 320px;
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Styling for item details */
+.item-title {
+  font-weight: bold;
+  font-size: 20px;
+  color: #2c3e50;
+}
+
+.item-description {
+  color: #7f8c8d;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.item-color {
+  font-weight: bold;
+  color: #3498db;
+}
+
+.item-price {
+  font-weight: bold;
+  color: #27ae60;
+}
+
+.last-event {
+  font-style: italic;
+  color: #e74c3c;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 20px;
+    height: auto;
+  }
+
+  .MuiTabs-flexContainer {
+    flex-direction: column;
+  }
+
+  .MuiTab-root {
+    width: 100%;
+  }
+
+  .item-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .item-card {
+    width: 90%;
+  }
+}

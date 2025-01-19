@@ -1,1 +1,43 @@
-{}
+{
+  "cc9ba94f-b673-4779-bcf1-ef9bb4a50c69": {
+    "id": "cc9ba94f-b673-4779-bcf1-ef9bb4a50c69",
+    "name": "Item 1",
+    "description": "Item Description",
+    "color": "Blue",
+    "price": "1000",
+    "createdAt": "2025-01-19T15:58:02.111Z",
+    "updatedAt": "2025-01-19T15:58:02.111Z",
+    "events": []
+  },
+  "993173a2-5104-4719-b59e-03625507662c": {
+    "id": "993173a2-5104-4719-b59e-03625507662c",
+    "name": "Item 1",
+    "description": "New Item",
+    "color": "White",
+    "price": 1000,
+    "createdAt": "2025-01-19T18:00:16.649Z",
+    "updatedAt": "2025-01-19T18:16:31.952Z",
+    "events": [
+      {
+        "id": "2ab403c2-6e04-44db-b105-be0a681a16d9",
+        "itemId": "993173a2-5104-4719-b59e-03625507662c",
+        "type": "LOCATION_UPDATE",
+        "location": "London",
+        "custodian": "Kavya",
+        "status": "Opened",
+        "timestamp": "2025-01-19T18:01:05.350Z",
+        "notes": "Check stock items"
+      },
+      {
+        "id": "925744d2-2fa1-4665-b76f-1adb04befc93",
+        "itemId": "993173a2-5104-4719-b59e-03625507662c",
+        "type": "LOCATION_UPDATE",
+        "location": "Romford",
+        "custodian": "Jags",
+        "status": "Closed",
+        "timestamp": "2025-01-19T18:16:31.952Z",
+        "notes": "Check stock items"
+      }
+    ]
+  }
+}
