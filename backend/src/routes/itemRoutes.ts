@@ -12,4 +12,8 @@ router.put('/:id', asyncHandler(ItemController.updateItem));
 
 router.post('/:id/events', asyncHandler(ItemController.addEvent));
 
+router.get('/:id/events', asyncHandler(ItemController.getItemEvents));
+router.get('/:id/events/last', asyncHandler(ItemController.getLastEvent));
+
+
 export default router;

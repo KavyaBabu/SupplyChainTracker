@@ -79,4 +79,43 @@ export class ItemController {
       res.status(500).json({ error: 'Failed to add event' });
     }
   }
+
+  static async getItemEvents(req: Request, res: Response) {
+    try {
+      const db = await FileDB.getInstance();
+      const item = await db.getItem(req.params.id);
+  
+      if (!item) {
+        return res.status(404).json({ error: 'Item not found' });
+      }
+  
+      res.json(item.events);
+    } catch (error) {
+      console.error('Error fetching events:', error);
+      res.status(500).json({ error: 'Failed to get item events' });
+    }
+  }
+  
+  static async getLastEvent(req: Request, res: Response) {
+    try {
+      const db = await FileDB.getInstance();
+      const item = await db.getItem(req.params.id);
+  
+      if (!item) {
+        return res.status(404).json({ error: 'Item not found' });
+      }
+  
+      const lastEvent = item.events[item.events.length - 1];
+  
+      if (!lastEvent) {
+        return res.status(404).json({ error: 'No events found for this item' });
+      }
+  
+      res.json(lastEvent);
+    } catch (error) {
+      console.error('Error fetching last event:', error);
+      res.status(500).json({ error: 'Failed to get last event' });
+    }
+  }
+  
 }
