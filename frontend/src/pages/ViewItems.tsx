@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchItems, fetchLastEvent, fetchItemEvents } from '../services/api';
-import { Container, Typography, Button, TextField, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Tooltip, Dialog, DialogTitle, DialogContent, List, ListItem, ListItemText } from '@mui/material';
+import { TextField, Container, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Tooltip, DialogTitle, Dialog, DialogContent, List, ListItem, ListItemText } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 
 interface Item {
   id: string;
@@ -68,23 +69,23 @@ const ViewItems = () => {
 
   return (
     <Container>
-      <Typography variant="h4" align="center" gutterBottom>
-        View Items
-      </Typography>
-      <TextField
-        fullWidth
-        label="Search Items"
-        variant="outlined"
-        margin="normal"
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      <Button variant="contained" color="primary" onClick={loadItems} style={{ marginBottom: '20px' }}>
-        Refresh Items
-      </Button>
-      <TableContainer component={Paper}>
+      <div className="search-container">
+        <TextField 
+          variant="outlined" 
+          label="Search Items" 
+          value={searchQuery} 
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search by item name..."
+          className="search-bar-wide"
+          InputProps={{
+            startAdornment: <SearchIcon className="search-icon" />,
+          }}
+        />
+      </div>
+      <TableContainer component={Paper} style={{ marginTop: '20px' }} className="table-container">
         <Table>
           <TableHead>
-            <TableRow>
+            <TableRow className="table-header">
               <TableCell><b>Item Name</b></TableCell>
               <TableCell><b>ID</b></TableCell>
               <TableCell><b>Description</b></TableCell>
@@ -95,11 +96,13 @@ const ViewItems = () => {
           </TableHead>
           <TableBody>
             {filteredItems.map((item) => (
-              <TableRow key={item.id}>
+              <TableRow key={item.id} className="table-row">
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.id}</TableCell>
                 <TableCell>{item.description || 'N/A'}</TableCell>
-                <TableCell>{item.color || 'N/A'}</TableCell>
+                <TableCell style={{ color: item.color ? item.color.toLowerCase() : 'inherit' }}>
+                  {item.color || 'N/A'}
+                </TableCell>
                 <TableCell>{item.price || 'N/A'}</TableCell>
                 <TableCell>
                   {item.lastEvent ? (

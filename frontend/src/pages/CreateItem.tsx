@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextField, Button, Container, Typography, Alert } from '@mui/material';
+import { TextField, Button, Container, Typography, Alert, Card, CardContent, Grid } from '@mui/material';
 import { createItem } from '../services/api';
 
 const CreateItem = () => {
@@ -52,16 +52,36 @@ const CreateItem = () => {
   };
 
   return (
-    <Container>
-      <Typography variant="h4" gutterBottom>Create Item</Typography>
-      {success && <Alert severity="success">{success}</Alert>}
-      <form onSubmit={handleSubmit}>
-        <TextField fullWidth margin="normal" label="Name" value={formData.name} onChange={(e) => handleChange('name', e.target.value)} error={!!errors.name} helperText={errors.name} />
-        <TextField fullWidth margin="normal" label="Description" value={formData.description} onChange={(e) => handleChange('description', e.target.value)} error={!!errors.description} helperText={errors.description} />
-        <TextField fullWidth margin="normal" label="Color" value={formData.color} onChange={(e) => handleChange('color', e.target.value)} error={!!errors.color} helperText={errors.color} />
-        <TextField fullWidth margin="normal" label="Price" value={formData.price} onChange={(e) => handleChange('price', e.target.value)} error={!!errors.price} helperText={errors.price} type="number" />
-        <Button type="submit" variant="contained" color="primary">Create</Button>
-      </form>
+    <Container maxWidth="sm"  style={{ marginTop: '20px' }}>
+      <Card className="form-card" elevation={3}>
+        <CardContent>
+          <Typography variant="h5" align="center" gutterBottom>
+            CREATE ITEM
+          </Typography>
+          {success && <Alert severity="success" className="alert-success">{success}</Alert>}
+          <form onSubmit={handleSubmit} style={{ marginTop: '10px' }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField fullWidth size="small" label="Name" variant="outlined" value={formData.name} onChange={(e) => handleChange('name', e.target.value)} error={!!errors.name} helperText={errors.name} className="input-field" />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField fullWidth size="small" label="Description" variant="outlined" value={formData.description} onChange={(e) => handleChange('description', e.target.value)} error={!!errors.description} helperText={errors.description} className="input-field" />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField fullWidth size="small" label="Color" variant="outlined" value={formData.color} onChange={(e) => handleChange('color', e.target.value)} error={!!errors.color} helperText={errors.color} className="input-field" />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField fullWidth size="small" label="Price" type="number" variant="outlined" value={formData.price} onChange={(e) => handleChange('price', e.target.value)} error={!!errors.price} helperText={errors.price} className="input-field" />
+              </Grid>
+              <Grid item xs={12} className="button-container" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <Button type="submit" variant="contained" color="primary" size="large" className="styled-button">
+                  Create
+                </Button>
+              </Grid>
+            </Grid>
+          </form>
+        </CardContent>
+      </Card>
     </Container>
   );
 };

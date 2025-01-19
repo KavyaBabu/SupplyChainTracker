@@ -44,10 +44,10 @@
     "id": "59adae37-c506-46ee-9f15-08f71d2d410c",
     "name": "Item 2",
     "description": "Description any",
-    "color": "Red",
+    "color": "Yellow",
     "price": "1000",
     "createdAt": "2025-01-19T18:46:00.546Z",
-    "updatedAt": "2025-01-19T19:26:30.180Z",
+    "updatedAt": "2025-01-19T22:15:04.849Z",
     "events": [
       {
         "id": "562f971a-d237-47d0-aed3-92d3f1fe5cca",
@@ -68,7 +68,28 @@
     "color": "Black",
     "price": "100",
     "createdAt": "2025-01-19T18:51:22.166Z",
-    "updatedAt": "2025-01-19T18:51:22.166Z",
+    "updatedAt": "2025-01-19T22:18:12.052Z",
+    "events": [
+      {
+        "id": "a3c64f4c-5dc8-4a54-badc-4a4a475e2840",
+        "itemId": "fd280a7a-d920-41ae-a80a-9d2def9793bb",
+        "type": "CUSTODIAN_CHANGE",
+        "location": "London",
+        "custodian": "kavya",
+        "status": "IN TRANSIT",
+        "timestamp": "2025-01-19T22:18:12.052Z",
+        "notes": "notes"
+      }
+    ]
+  },
+  "c3e5e930-f3a9-4d71-a958-0e0a81a853bb": {
+    "id": "c3e5e930-f3a9-4d71-a958-0e0a81a853bb",
+    "name": "Name",
+    "description": "des",
+    "color": "sndks",
+    "price": "10",
+    "createdAt": "2025-01-19T22:15:42.169Z",
+    "updatedAt": "2025-01-19T22:15:42.169Z",
     "events": []
   }
 }
