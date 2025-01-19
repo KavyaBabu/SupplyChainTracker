@@ -5,6 +5,8 @@ import ViewItems from './pages/ViewItems';
 import CreateItem from './pages/CreateItem';
 
 import './styles/global.css';
+import UpdateItem from './pages/UpdateItem';
+import AddEvent from './pages/AddEvent';
 
 const AppContent = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -14,6 +16,8 @@ const AppContent = () => {
     setTabIndex(newValue);
     if (newValue === 0) navigate('/');
     if (newValue === 1) navigate('/create-item');
+    if (newValue === 2) navigate('/update-item');
+    if (newValue === 3) navigate('/add-event');
   };
 
   return (
@@ -40,6 +44,8 @@ const AppContent = () => {
       <Routes>
         <Route path="/" element={<ViewItems />} />
         <Route path="/create-item" element={<CreateItem />} />
+        <Route path="/update-item" element={<UpdateItem />} />
+        <Route path="/add-event" element={<AddEvent />} />
       </Routes>
     </Container>
   );

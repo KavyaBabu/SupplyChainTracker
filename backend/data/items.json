@@ -11,12 +11,12 @@
   },
   "993173a2-5104-4719-b59e-03625507662c": {
     "id": "993173a2-5104-4719-b59e-03625507662c",
-    "name": "Item 1",
+    "name": "Item new",
     "description": "New Item",
     "color": "White",
-    "price": 1000,
+    "price": "500",
     "createdAt": "2025-01-19T18:00:16.649Z",
-    "updatedAt": "2025-01-19T18:16:31.952Z",
+    "updatedAt": "2025-01-19T19:16:05.525Z",
     "events": [
       {
         "id": "2ab403c2-6e04-44db-b105-be0a681a16d9",
@@ -44,11 +44,22 @@
     "id": "59adae37-c506-46ee-9f15-08f71d2d410c",
     "name": "Item 2",
     "description": "Description any",
-    "color": "black",
+    "color": "Red",
     "price": "1000",
     "createdAt": "2025-01-19T18:46:00.546Z",
-    "updatedAt": "2025-01-19T18:46:00.546Z",
-    "events": []
+    "updatedAt": "2025-01-19T19:26:30.180Z",
+    "events": [
+      {
+        "id": "562f971a-d237-47d0-aed3-92d3f1fe5cca",
+        "itemId": "59adae37-c506-46ee-9f15-08f71d2d410c",
+        "type": "CUSTODIAN_CHANGE",
+        "location": "Lonon",
+        "custodian": "Kavya",
+        "status": "IN TRANSIT",
+        "timestamp": "2025-01-19T19:26:30.180Z",
+        "notes": "Check properly"
+      }
+    ]
   },
   "fd280a7a-d920-41ae-a80a-9d2def9793bb": {
     "id": "fd280a7a-d920-41ae-a80a-9d2def9793bb",
