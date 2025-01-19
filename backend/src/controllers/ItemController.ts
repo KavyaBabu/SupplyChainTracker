@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { FileDB } from '../utils/fileDB';
 import { Item } from '../models/Item';
+import { Event as ItemEvent } from '../models/Event';
 
 export class ItemController {
   static async createItem(req: Request, res: Response) {
@@ -51,5 +52,31 @@ export class ItemController {
       res.status(500).json({ error: 'Failed to update item' });
     }
   }
+
+  static async addEvent(req: Request, res: Response) {
+    try {
+      const db = await FileDB.getInstance();
+      const newEvent: ItemEvent = {
+        id: uuidv4(),
+        itemId: req.params.id,
+        type: req.body.type,
+        location: req.body.location,
+        custodian: req.body.custodian,
+        status: req.body.status,
+        timestamp: new Date(),
+        notes: req.body.notes
+      };
   
+      const updatedItem = await db.addEvent(req.params.id, newEvent);
+  
+      if (!updatedItem) {
+        return res.status(404).json({ error: 'Item not found' });
+      }
+  
+      res.json(updatedItem);
+    } catch (error) {
+      console.error('Error adding event:', error);
+      res.status(500).json({ error: 'Failed to add event' });
+    }
+  }
 }

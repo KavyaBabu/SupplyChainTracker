@@ -10,4 +10,6 @@ router.post('/', asyncHandler(ItemController.createItem));
 router.get('/:id', asyncHandler(ItemController.getItem));
 router.put('/:id', asyncHandler(ItemController.updateItem));
 
+router.post('/:id/events', asyncHandler(ItemController.addEvent));
+
 export default router;
