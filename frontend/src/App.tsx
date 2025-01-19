@@ -1,4 +1,3 @@
-// Enhanced View with Better Design and Fixed Container Size
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import ViewItems from './pages/ViewItems';
