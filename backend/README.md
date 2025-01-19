@@ -41,7 +41,7 @@ supply-chain-backend/
 ## **Installation & Setup**
 ### **1. Clone the Repository**
 ```sh
-git clone https://github.com/KavyaBabu/IOTA_fullstackdeveloper_coding_challenge.git
+git clone https://github.com/KavyaBabu/IOTA_TWIN_CodingChallenge.git
 cd backend
 ```
 
