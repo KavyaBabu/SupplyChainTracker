@@ -1,50 +1,57 @@
-# React + TypeScript + Vite
+# Supply Chain Track & Trace System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web application for tracking and managing supply chain events, built with **React (Vite)** and **Material-UI**.
 
-Currently, two official plugins are available:
+## 🚀 Features
+  - **View Items**: View items along with their last event. Clicking on the last event column pops up detailed event history with the last event highlighted in green. Toggle between **Table View** or **Card View** based on preference.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  - **Create, Update, and Manage Items**
 
-## Expanding the ESLint configuration
+  - **Add Events to Items**: Easily log events related to an item.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+  - **Mobile Responsive**: Fully optimized for all devices using Material-UI.
 
-- Configure the top-level `parserOptions` property like this:
+## 📦 Installation
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/KavyaBabu/IOTA_TWIN_CodingChallenge.git
+   cd frontend
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Run the development server:
+   ```sh
+   npm run dev
+   ```
+   - The app will be available at **http://localhost:5173**
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🐳 Running with Docker
+1. **Build Docker Image:**
+   ```sh
+   docker build -t supply-chain-app .
+   ```
+2. **Run Container:**
+   ```sh
+   docker run -p 8080:80 supply-chain-app
+   ```
+   - The app will be available at **http://localhost:8080**
+
+### **2. Run with Docker Compose**
+```sh
+docker-compose up --build
 ```
+Then check:  
+**http://localhost:8080/**  
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+To stop:
+```sh
+docker-compose down
 ```
+## Building for Production
+```sh
+npm run build
+```
+This will generate optimized files in the `dist/` folder.
+

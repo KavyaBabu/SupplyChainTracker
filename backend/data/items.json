@@ -2,11 +2,11 @@
   "cc9ba94f-b673-4779-bcf1-ef9bb4a50c69": {
     "id": "cc9ba94f-b673-4779-bcf1-ef9bb4a50c69",
     "name": "Item 1",
-    "description": "Item Description",
+    "description": "Item Description Update",
     "color": "Blue",
     "price": "1000",
     "createdAt": "2025-01-19T15:58:02.111Z",
-    "updatedAt": "2025-01-19T15:58:02.111Z",
+    "updatedAt": "2025-01-20T13:55:55.340Z",
     "events": []
   },
   "993173a2-5104-4719-b59e-03625507662c": {
@@ -163,5 +163,26 @@
     "createdAt": "2025-01-19T22:33:47.336Z",
     "updatedAt": "2025-01-19T22:33:47.336Z",
     "events": []
+  },
+  "c8023822-2d80-43d5-b6a1-c95200a463f8": {
+    "id": "c8023822-2d80-43d5-b6a1-c95200a463f8",
+    "name": "FInal test",
+    "description": "Test",
+    "color": "Black",
+    "price": "0100",
+    "createdAt": "2025-01-20T13:55:46.590Z",
+    "updatedAt": "2025-01-20T13:56:19.624Z",
+    "events": [
+      {
+        "id": "424556f9-ee46-495e-aee2-60af9866527f",
+        "itemId": "c8023822-2d80-43d5-b6a1-c95200a463f8",
+        "type": "CUSTODIAN_CHANGE",
+        "location": "Warehouse AB",
+        "custodian": "Kavya",
+        "status": "DELIVERED",
+        "timestamp": "2025-01-20T13:56:19.624Z",
+        "notes": "Notess"
+      }
+    ]
   }
 }
