@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { TextField, Button, Container, Typography, Alert, MenuItem, Select, FormControl, InputLabel, Card, CardContent, Grid } from '@mui/material';
 import { updateItem, fetchItems } from '../services/api';
+import { SelectChangeEvent } from '@mui/material';
 
 interface Item {
   id: string;
@@ -33,7 +34,7 @@ const UpdateItem = () => {
     fetchItemsList();
   }, []);
 
-  const handleSelectChange = (event: any) => {
+  const handleSelectChange = (event: SelectChangeEvent<string>) => {
     const itemId = event.target.value as string;
     setSelectedItemId(itemId);
     const selectedItem = items.find(item => item.id === itemId);
@@ -62,7 +63,7 @@ const UpdateItem = () => {
   };
 
   const validateForm = () => {
-    let newErrors: { [key: string]: string } = {};
+    const newErrors: { [key: string]: string } = {};
     newErrors.name = validateField('Name', formData.name);
     newErrors.description = validateField('Description', formData.description);
     newErrors.color = validateField('Color', formData.color);

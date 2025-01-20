@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react';
 import { fetchItems, fetchLastEvent, fetchItemEvents } from '../services/api';
-import { TextField, Container, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Tooltip, DialogTitle, Dialog, DialogContent, List, ListItem, ListItemText } from '@mui/material';
+import {
+  TextField, Container, Typography, Card, CardContent, CardActions, Button,
+  Grid, Tooltip, Dialog, DialogTitle, DialogContent, List, ListItem, ListItemText, 
+  Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, 
+  ToggleButton, ToggleButtonGroup, useMediaQuery, Box
+} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { useTheme } from '@mui/material/styles';
+import TableViewIcon from '@mui/icons-material/TableView';
+import ViewModuleIcon from '@mui/icons-material/ViewModule';
 
 interface Item {
   id: string;
@@ -13,12 +21,26 @@ interface Item {
   events: [];
 }
 
+interface Event {
+  id: string;
+  itemId: string;
+  status: string;
+  type: string;
+  location?: string;
+  custodian?: string;
+  timestamp: string;
+  notes?: string;
+}
 const ViewItems = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [viewMode, setViewMode] = useState<'table' | 'card'>('table');
   const [openDialog, setOpenDialog] = useState<boolean>(false);
-  const [eventList, setEventList] = useState<any[]>([]);
+  const [eventList, setEventList] = useState<Event[]>([]);
   const [highlightedEvent, setHighlightedEvent] = useState<string | null>(null);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
     loadItems();
@@ -36,6 +58,7 @@ const ViewItems = () => {
             const lastEvent = item.id ? await fetchLastEvent(item.id) : null;
             return { ...item, lastEvent: lastEvent?.status || '' };
           } catch (error) {
+            console.error("Error fetching last event:", error);
             return { ...item, lastEvent: '' };
           }
         })
@@ -69,55 +92,114 @@ const ViewItems = () => {
 
   return (
     <Container>
-      <div className="search-container">
-        <TextField 
-          variant="outlined" 
-          label="Search Items" 
-          value={searchQuery} 
+      <Box display="flex" justifyContent="center" sx={{ mt: 2 }}>
+        <ToggleButtonGroup
+          value={viewMode}
+          exclusive
+          onChange={(_, newView) => newView && setViewMode(newView)}
+          aria-label="View Mode"
+        >
+          <ToggleButton value="table" aria-label="Table View">
+            <TableViewIcon /> Table View
+          </ToggleButton>
+          <ToggleButton value="card" aria-label="Card View">
+            <ViewModuleIcon /> Card View
+          </ToggleButton>
+        </ToggleButtonGroup>
+      </Box>
+
+      <Box display="flex" justifyContent="center" sx={{ width: '100%', mt: 2 }}>
+        <TextField
+          variant="outlined"
+          label="Search Items"
+          value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search by item name..."
-          className="search-bar-wide"
+          sx={{
+            width: isMobile ? '100%' : '50%',
+            maxWidth: '600px',
+            '& .MuiInputBase-root': {
+              borderRadius: '25px',
+            },
+          }}
           InputProps={{
-            startAdornment: <SearchIcon className="search-icon" />,
+            startAdornment: <SearchIcon sx={{ mr: 1, color: 'gray' }} />,
           }}
         />
-      </div>
-      <TableContainer component={Paper} style={{ marginTop: '20px' }} className="table-container">
-        <Table>
-          <TableHead>
-            <TableRow className="table-header">
-              <TableCell><b>Item Name</b></TableCell>
-              <TableCell><b>ID</b></TableCell>
-              <TableCell><b>Description</b></TableCell>
-              <TableCell><b>Color</b></TableCell>
-              <TableCell><b>Price</b></TableCell>
-              <TableCell><b>Last Event</b></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {filteredItems.map((item) => (
-              <TableRow key={item.id} className="table-row">
-                <TableCell>{item.name}</TableCell>
-                <TableCell>{item.id}</TableCell>
-                <TableCell>{item.description || 'N/A'}</TableCell>
-                <TableCell style={{ color: item.color ? item.color.toLowerCase() : 'inherit' }}>
-                  {item.color || 'N/A'}
-                </TableCell>
-                <TableCell>{item.price || 'N/A'}</TableCell>
-                <TableCell>
-                  {item.lastEvent ? (
-                    <Tooltip title={item.lastEvent} arrow>
-                      <span style={{ cursor: 'pointer', textDecoration: 'underline' }}  onClick={() => handleOpenDialog(item.id)}>{item.lastEvent}</span>
-                    </Tooltip>
-                  ) : 'No Events'}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      </Box>
 
-      <Dialog open={openDialog} onClose={handleCloseDialog}>
+      {viewMode === 'table' ? (
+        <TableContainer component={Paper} sx={{ mt: 3, overflowX: 'auto' }}>
+          <Table>
+            <TableHead>
+              <TableRow sx={{ backgroundColor: theme.palette.grey[200] }}>
+                <TableCell><b>Item Name</b></TableCell>
+                <TableCell><b>ID</b></TableCell>
+                {!isMobile && <TableCell><b>Description</b></TableCell>}
+                <TableCell><b>Color</b></TableCell>
+                {!isMobile && <TableCell><b>Price</b></TableCell>}
+                <TableCell><b>Last Event</b></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {filteredItems.map((item) => (
+                <TableRow key={item.id}>
+                  <TableCell>{item.name}</TableCell>
+                  <TableCell>{item.id}</TableCell>
+                  {!isMobile && <TableCell>{item.description || 'N/A'}</TableCell>}
+                  <TableCell style={{ color: item.color ? item.color.toLowerCase() : 'inherit' }}>
+                    {item.color || 'N/A'}
+                  </TableCell>
+                  {!isMobile && <TableCell>{item.price || 'N/A'}</TableCell>}
+                  <TableCell>
+                    {item.lastEvent ? (
+                      <Tooltip title={item.lastEvent} arrow>
+                        <span
+                          style={{ cursor: 'pointer', textDecoration: 'underline' }}
+                          onClick={() => handleOpenDialog(item.id)}
+                        >
+                          {item.lastEvent}
+                        </span>
+                      </Tooltip>
+                    ) : 'No Events'}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      ) : (
+        <Grid container spacing={3} sx={{ mt: 3 }}>
+          {filteredItems.map((item) => (
+            <Grid item xs={12} sm={6} md={4} key={item.id}>
+              <Card sx={{ boxShadow: 3, borderRadius: '10px', p: 2, textAlign: 'center' }}>
+                <CardContent>
+                  <Typography variant="h6">{item.name}</Typography>
+                  <Typography variant="body2" color="textSecondary">
+                    <b>ID:</b> {item.id}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary">
+                    <b>Description:</b> {item.description || 'N/A'}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: item.color?.toLowerCase() }}>
+                    <b>Color:</b> {item.color || 'N/A'}
+                  </Typography>
+                  <Typography variant="body2">
+                    <b>Price:</b> {item.price || 'N/A'}
+                  </Typography>
+                </CardContent>
+                <CardActions sx={{ justifyContent: 'center' }}>
+                  <Button variant="contained" color="primary" onClick={() => handleOpenDialog(item.id)}>
+                    View Events
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      )}
+
+      <Dialog open={openDialog} onClose={handleCloseDialog} fullWidth maxWidth="sm">
         <DialogTitle>Item Events</DialogTitle>
         <DialogContent>
           <List>

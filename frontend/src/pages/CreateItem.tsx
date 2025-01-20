@@ -22,7 +22,7 @@ const CreateItem = () => {
   };
 
   const validateForm = () => {
-    let newErrors: { [key: string]: string } = {};
+    const newErrors: { [key: string]: string } = {};
     newErrors.name = validateField('Name', formData.name);
     newErrors.description = validateField('Description', formData.description);
     newErrors.color = validateField('Color', formData.color);
