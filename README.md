@@ -1,4 +1,3 @@
-# IOTA_TWIN_CodingChallenge
 # Supply Chain Track & Trace
 
 A web application for tracking and managing supply chain events, built with **React (Vite)** for the frontend and **Node.js/Express** for the backend.
