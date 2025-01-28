@@ -13,7 +13,7 @@ A web application for tracking and managing supply chain events, built with **Re
 
 ### **1. Clone the Repository**
 ```sh
-git clone https://github.com/KavyaBabu/IOTA_TWIN_CodingChallenge.git
+git clone https://github.com/KavyaBabu/SupplyChainTracker.git
 ```
 
 ### **2. Run Locally (Development)**
